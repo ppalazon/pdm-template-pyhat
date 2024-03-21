@@ -1,6 +1,4 @@
-from typing import Annotated
-
-from fastapi import APIRouter, Form, Request
+from fastapi import APIRouter, Request
 from jinja2_fragments.fastapi import Jinja2Blocks
 
 from app.config import Settings
@@ -16,10 +14,3 @@ router = APIRouter()
 @router.get("/")
 def index(request: Request):
     return templates.TemplateResponse("main.html", {"request": request})
-
-
-@router.get("/about")
-def about(request: Request):
-    """About page - some background information about this app."""
-
-    return templates.TemplateResponse("about.html", {"request": request})
