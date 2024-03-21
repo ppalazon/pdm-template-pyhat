@@ -16,20 +16,14 @@ async def lifespan(app: FastAPI):
     on app startup, and will run code after `yield` on app shutdown.
     """
 
-    try:
-        subprocess.run(
-            [
-                "tailwindcss",
-                "-i",
-                str(settings.APP_DIR / "tailwind" / "tw.css"),
-                "-o",
-                str(settings.STATIC_DIR / "css" / "main.css"),
-            ]
-        )
-    except Exception as e:
-        print(f"Error running tailwindcss: {e}")
+    print("Starting this application...")
+    print(
+        "Don't forget to run tailwindcss with `pdm run tailwind` on any other terminal"
+    )
 
     yield
+
+    print("Finishing this application...")
 
 
 def get_app() -> FastAPI:
